@@ -1,8 +1,11 @@
 #include "curses.h"
 #include <iostream>
-//#include "ServerFsm.h"
+#include "ServerFsm.h"
 #include "Front.h"
+//#include "ClientFsm.h"
 
+#define KEYOPTIONFORSERVER 's'
+#define KEYOPTIONFORCLIENT 'c'
 
 using namespace std;
 
@@ -14,6 +17,7 @@ int main(void)
 	WINDOW * winTest = NULL;                     //Variable en dónde se guarda la terminal (Window) en donde voy a trabajar.
 
 	char option;
+	int i = 0;
 
 	winTest = initscr();
 	if (winTest != NULL)
@@ -30,7 +34,28 @@ int main(void)
 		option = selectSimulationMode();
 		wclear(winTest);
 		printMenu(option);
-		getchar();
+		
+		fsm_server simulatorServer;
+		//fsm_client simulator;
+
+		if (option)
+		{
+			do
+			{
+				i = getch();
+				if (i != ERR)
+				{
+					if (toupper(i) >= 'A' && toupper(i) <= 'G')
+					{
+						simulatorServer.run((toupper(i) - 'A'), (void *) "hola");
+					}
+				}
+			} while (toupper(i) != 'Q' & (simulatorServer.get_state() != SHUTDOWN));
+		}
+		else
+		{
+
+		}
 		endwin();
 	}
 
@@ -45,7 +70,7 @@ char selectSimulationMode(void)
 	printInitMsg();
 
 	option = getchar();
-	while ((tolower(option) != 's') && (tolower(option) != 'c'))
+	while ((tolower(option) != KEYOPTIONFORSERVER) && (tolower(option) != KEYOPTIONFORCLIENT))
 	{
 		printErrMsg();
 		option = getchar();

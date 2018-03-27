@@ -6,6 +6,7 @@ static void printEventList(int numMsg);
 static void printFsmStatusList(int BoardStatus);
 
 enum{SEND_READY = 7, RECIEVE_READY, SEND_MOVE, RECIEVE_MOVE, TIMEOUT, TIMEOUT2, ACK, SEND_QUIT, RECIEVE_QUIT, ERROR};
+enum{StatusTitle = 6, EVENT_RECIEVED, LAST_EVENT, ACCION_EXEC, ACTUAL_STATE };
 
 void colorInit(void)
 {
@@ -37,21 +38,20 @@ void printErrMsg(void)
 
 void printMenu(char mode)
 {
-	switch (mode)
+	if (mode = 's')
 	{
-		case 's':
-			printw("Simulacion de Server de Worms");
-			break;
-		case 'c':
-			printw("Simulacion de cliente de Worms");
-			break;
-		default:
-			break;
+		printw("Simulacion de Servidor");
+	}
+	else if (mode = 'c')
+	{
+		printw("Simulacion de Cliente");
 	}
 	color_set(2, NULL);
 	move(1, 0);
-	printw("Cuando el usuario presione las teclas de Eventos de abajo el simulador \nEntiende que se genero un nuevo evento y responde ante el \nRealizando una accion y cambiando el estado");
+	printw("La simulacion se realiza mediante la suposicion de eventos por teclado.\n");
+	printw("Al llegar un evento, se actualiza el status de maquina de estado.\n");
 	move(4, 0);
+	color_set(3, NULL);
 	printw("Eventos:");
 
 	for (int i = SEND_READY; i <= ERROR; i++)		//itera hasta el final que la variable sea la ultima del enum de eventos
@@ -66,7 +66,7 @@ void printMenu(char mode)
 
 void printRefreshStatus(int what2print, void* msg)
 {
-
+	if (what2print == );
 }
 
 
@@ -134,27 +134,23 @@ static void printFsmStatusList(int BoardStatus)
 {
 	switch (BoardStatus)
 	{
-	case 6:
+	case StatusTitle:
 		move(BoardStatus, OPLINE + 10);
 		printw("| Status de la FSM");
 		break;
-	case 7:
-		move(BoardStatus, OPLINE + 10);
-		printw("| Status de la FSM");
-		break;
-	case 8:
+	case EVENT_RECIEVED:
 		move(BoardStatus, OPLINE + 10);
 		printw("| Evento Recibido");
 		break;
-	case 9:
+	case LAST_EVENT:				
 		move(BoardStatus, OPLINE + 10);
 		printw("| Ultimo Evento Recibido");
 		break;
-	case 10:
+	case ACCION_EXEC:
 		move(BoardStatus, OPLINE + 10);
 		printw("| Accion Ejecutada");
 		break;
-	case 11:
+	case ACTUAL_STATE:
 		move(BoardStatus, OPLINE + 10);
 		printw("| Estado Actual");
 		break;
