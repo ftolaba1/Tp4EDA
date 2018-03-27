@@ -18,6 +18,7 @@ int main(void)
 
 	char option;
 	int i = 0;
+	int state;
 
 	winTest = initscr();
 	if (winTest != NULL)
@@ -47,10 +48,10 @@ int main(void)
 				{
 					if (toupper(i) >= 'A' && toupper(i) <= 'G')
 					{
-						simulatorServer.run((toupper(i) - 'A'), (void *) "hola");
+						simulatorServer.run( (toupper(i) - 'A') , (void *) "hola");
 					}
 				}
-			} while (toupper(i) != 'Q' & (simulatorServer.get_state() != SHUTDOWN));
+			} while ((toupper(i) != 'Q') && ( ( state = (simulatorServer.getState())) != SHUTDOWN ) );
 		}
 		else
 		{

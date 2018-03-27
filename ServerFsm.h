@@ -32,5 +32,6 @@ class fsm_server
 
 	public:
 		void run(tevento ev, void* data);
+		int getState() { return estado; }
 		fsm_server();
 };
