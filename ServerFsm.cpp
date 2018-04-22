@@ -1,9 +1,10 @@
+/*
 #include "ServerFsm.h"
 #include "Front.h"
 
-void fsm_server::run(tevento ev, void* data)
+void fsm_server::run(int ev, void* data)
 {
-	((data_t*)data)->LastEvent = ((data_t *)data)->Event;
+	((data_t*)data)->LastEvent = ((data_t*)data)->Event;
 	((data_t*)data)->Event = ev;
 	tabla[estado][ev].action(data);
 	estado = tabla[estado][ev].proximoEstado;
@@ -16,7 +17,7 @@ fsm_server::fsm_server()
 
 void waitReadyConfirm(void* data)
 {
-	printRefreshStatus();
+	printRefreshStatus( ((data_t*)data).LastEvent , ((data_t*)data).Event ,"Esperando Ready del Cliente");
 }
 
 void errorComunication(void* data)
@@ -52,4 +53,4 @@ void reSend(void* data)
 void doNothing(void* data)
 {
 
-}
+}*/

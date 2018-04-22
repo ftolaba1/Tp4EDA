@@ -36,10 +36,10 @@ int main(void)
 		wclear(winTest);
 		printMenu(option);
 		
-		fsm_server simulatorServer;
+//		fsm_server simulatorServer;
 		//fsm_client simulator;
 
-		if (option)
+/*		if (option)
 		{
 			do
 			{
@@ -56,7 +56,7 @@ int main(void)
 		else
 		{
 
-		}
+		}*/
 		endwin();
 	}
 

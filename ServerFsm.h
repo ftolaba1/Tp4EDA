@@ -1,4 +1,4 @@
-
+/*
 typedef enum { READYTOCONNECT, WAIT_REQUEST, WAIT_ACK, SHUTDOWN }testado;
 typedef enum { SEND_READY, RECIEVE_READY, ACK, SEND_MOVE_REQUEST, RECEIVED_MOVE_REQUEST, ERROR, RECEIVED_QUIT_REQUEST, SEND_QUIT_REQUEST, TIMEOUT1, TIMEOUT2 }tevento;
 typedef void(*funpointer)(void* data);
@@ -28,10 +28,10 @@ class fsm_server
 			{ { WAIT_ACK,&waitReadyConfirm } ,{SHUTDOWN,&errorComunication} , {WAIT_REQUEST,&doStuff} , {SHUTDOWN,&errorComunication} , {SHUTDOWN,&errorComunication} , {SHUTDOWN,&errorComunication} , {SHUTDOWN,&errorComunication} , {WAIT_ACK,&reSend} , {SHUTDOWN,&errorComunication} , {} },//WAIT_ACK
 			{ { WAIT_ACK,&waitReadyConfirm } ,{SHUTDOWN,&doNothing},{SHUTDOWN,&doNothing},{SHUTDOWN,&doNothing},{SHUTDOWN,&doNothing},{SHUTDOWN,&doNothing},{SHUTDOWN,&doNothing},{WAIT_ACK,&doNothing},{SHUTDOWN,&doNothing} },//SHUTDOWN
 		};
-		testado estado;
+		int estado;
 
 	public:
-		void run(tevento ev, void* data);
+		void run(int ev, void* data);
 		int getState() { return estado; }
 		fsm_server();
-};
+};*/

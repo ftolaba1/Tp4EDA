@@ -26,7 +26,7 @@ void colorInit(void)
 
 void printInitMsg(void)
 {
-	printw("Bienvenido al programa de simulación del protocolo de comunicación de Servidor/Cliente\n");
+	printw("Bienvenido al programa de simulacion del protocolo de comunicacion de Servidor/Cliente\n");
 	printw("Presione 'S' para simular SERVIDOR o 'C' para CLIENTE: ");
 }
 
@@ -64,9 +64,9 @@ void printMenu(char mode)
 	}
 }
 
-void printRefreshStatus(int what2print, void* msg)
+void printRefreshStatus(int lastevent, int Event, void* msg)
 {
-	if (what2print == );
+	
 }
 
 
@@ -134,27 +134,27 @@ static void printFsmStatusList(int BoardStatus)
 {
 	switch (BoardStatus)
 	{
-	case StatusTitle:
-		move(BoardStatus, OPLINE + 10);
-		printw("| Status de la FSM");
-		break;
-	case EVENT_RECIEVED:
-		move(BoardStatus, OPLINE + 10);
-		printw("| Evento Recibido");
-		break;
-	case LAST_EVENT:				
-		move(BoardStatus, OPLINE + 10);
-		printw("| Ultimo Evento Recibido");
-		break;
-	case ACCION_EXEC:
-		move(BoardStatus, OPLINE + 10);
-		printw("| Accion Ejecutada");
-		break;
-	case ACTUAL_STATE:
-		move(BoardStatus, OPLINE + 10);
-		printw("| Estado Actual");
-		break;
-	default:
-		break;
+		case StatusTitle:
+			move(BoardStatus, OPLINE + 10);
+			printw("| Status de la FSM");
+			break;
+		case EVENT_RECIEVED:
+			move(BoardStatus, OPLINE + 10);
+			printw("| Evento Recibido:");
+			break;
+		case LAST_EVENT:				
+			move(BoardStatus, OPLINE + 10);
+			printw("| Evento Anterior:");
+			break;
+		case ACCION_EXEC:
+			move(BoardStatus, OPLINE + 10);
+			printw("| Accion Ejecutada:");
+			break;
+		case ACTUAL_STATE:
+			move(BoardStatus, OPLINE + 10);
+			printw("| Estado Actual:");
+			break;
+		default:
+			break;
 	}
 }

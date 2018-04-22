@@ -6,10 +6,10 @@ void printInitMsg(void);
 
 void printErrMsg(void);
 
-void printRefreshStatus(int what2print, void* msg);
+void printRefreshStatus(int lastevent, int Event, void* msg);
 
-typedef struct 
+struct data_t 
 {
-	tevento LastEvent;
-	tevento Event
-}data_t;
+	int LastEvent;
+	int Event;
+};
